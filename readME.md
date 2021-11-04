@@ -2,6 +2,8 @@
 
 Sign in with Apple JWT generator. This is a tiny utility that will help you generate the JWT secret needed by Apple for Sign In With Apple (SIWA)
 
+This tool will generate a JWT that's valid for six months, which is the longest Apple allows.
+
 ---
 
 ## Requirements
