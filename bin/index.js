@@ -1,6 +1,9 @@
+#!/usr/bin/env node
+
 const chalk = require('chalk');
 const yargs = require('yargs');
 const jwt = require('jsonwebtoken');
+const fs= require('fs');
 
 const options = yargs
   .usage('Usage: -k <private key>')
@@ -39,9 +42,10 @@ const options = yargs
     demandOption: true,
   }).argv;
 
+  const key =fs.readFile(options.key)
 jwt.sign(
   { iat: Date.now() },
-  options.key,
+  key,
   {
     algorithm: 'ES256',
     keyid: options.keyid,
@@ -55,10 +59,12 @@ jwt.sign(
     if (err) {
       console.error(err);
     }
-    const splitToken =token.split('.')
+    const splitToken = token.split('.');
     const purple = chalk.hex('#d63aff');
-          red = chalk.hex('#fb015b');
-          cyan = chalk.hex('#00b9f1');
-    console.log(`${red(splitToken[0])}.${purple(splitToken[1])}.${cyan(splitToken[2])}`);
+    red = chalk.hex('#fb015b');
+    cyan = chalk.hex('#00b9f1');
+    console.log(
+      `${red(splitToken[0])}.${purple(splitToken[1])}.${cyan(splitToken[2])}`
+    );
   }
 );
