@@ -1,12 +1,16 @@
 {
   "name": "siwa-jwt-secret",
   "version": "1.0.0",
-  "description": "A utility CLI to help generate Sign-in With Apple client_secret",
+  "description": "A utility CLI to help generate Sign-in With Apple client_secret JWT",
   "main": "bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ali Falahi - ForgeRock",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/afalahi/siwa-jwt-secret"
+  },
   "license": "MIT",
   "private": false,
   "dependencies": {
