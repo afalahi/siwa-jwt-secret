@@ -1,6 +1,6 @@
 {
   "name": "siwa-jwt-secret",
-  "version": "0.1",
+  "version": "1.0",
   "description": "A utility CLI to help generate Sign-in With Apple client_secret",
   "main": "bin/index.js",
   "scripts": {

@@ -3,7 +3,7 @@
 const chalk = require('chalk');
 const yargs = require('yargs');
 const jwt = require('jsonwebtoken');
-const fs= require('fs');
+const fs = require('fs');
 
 const options = yargs
   .usage('Usage: -k <private key>')
@@ -42,29 +42,35 @@ const options = yargs
     demandOption: true,
   }).argv;
 
-  const key =fs.readFile(options.key)
-jwt.sign(
-  { iat: Date.now() },
-  key,
-  {
-    algorithm: 'ES256',
-    keyid: options.keyid,
-    issuer: options.iss,
-    audience: options.aud,
-    expiresIn: '500y',
-    subject: options.sub,
-    header: { typ: undefined },
-  },
-  (err, token) => {
-    if (err) {
-      console.error(err);
-    }
-    const splitToken = token.split('.');
-    const purple = chalk.hex('#d63aff');
-    red = chalk.hex('#fb015b');
-    cyan = chalk.hex('#00b9f1');
-    console.log(
-      `${red(splitToken[0])}.${purple(splitToken[1])}.${cyan(splitToken[2])}`
-    );
+fs.readFile(options.key, (err, data) => {
+  if (err) {
+    console.error(err.message);
+    return
   }
-);
+  jwt.sign(
+    { iat: Date.now() },
+    data,
+    {
+      algorithm: 'ES256',
+      keyid: options.keyid,
+      issuer: options.iss,
+      audience: options.aud,
+      expiresIn: '500y',
+      subject: options.sub,
+      header: { typ: undefined },
+    },
+    (err, token) => {
+      if (err) {
+        console.error(err);
+        return
+      }
+      const splitToken = token.split('.');
+      const purple = chalk.hex('#d63aff');
+      red = chalk.hex('#fb015b');
+      cyan = chalk.hex('#00b9f1');
+      console.log(
+        `${red(splitToken[0])}.${purple(splitToken[1])}.${cyan(splitToken[2])}`
+      );
+    }
+  );
+});
