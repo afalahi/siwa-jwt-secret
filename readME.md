@@ -14,11 +14,11 @@ You need nodeJS and NPM installed to use this utility
 
 ## Usage
 
-    swia-jwt -a <audience> -k <key file name/path> -d <key id> -i <issuer> -s <subject>
+    siwa-jwt -a <audience> -k <key file name/path> -d <key id> -i <issuer> -s <subject>
 
 ## Aliases
 
-    swia-jwt --aud <audience> --key <key file name/path> --keyid <key id> --iss <issuer> --sub <subject>
+    siwa-jwt --aud <audience> --key <key file name/path> --keyid <key id> --iss <issuer> --sub <subject>
 
 ## Dependencies
 
