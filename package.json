@@ -2,13 +2,17 @@
   "name": "siwa-jwt-secret",
   "version": "0.1",
   "description": "A utility CLI to help generate Sign-in With Apple client_secret",
-  "main": "index.js",
+  "main": "bin/index.js",
   "author": "Ali Falahi - ForgeRock",
   "license": "MIT",
   "private": false,
   "dependencies": {
     "boxen": "^6.2.1",
     "chalk": "^4.1.2",
+    "jsonwebtoken": "^8.5.1",
     "yargs": "^17.2.1"
+  },
+  "bin": {
+    "siwa-jwt": "./bin/index.js"
   }
 }
